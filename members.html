@@ -13,6 +13,7 @@
       overflow: hidden;
       background: black;
     }
+    /* Video Background */
     video {
       position: fixed;
       top: 0;
@@ -20,7 +21,7 @@
       min-width: 100%;
       min-height: 100%;
       object-fit: cover;
-      z-index: -1; /* supaya video di belakang */
+      z-index: -1; /* selalu di belakang */
     }
     /* Hamburger */
     .menu-icon {
@@ -34,6 +35,7 @@
       background: rgba(0,0,0,0.5);
       padding: 8px 12px;
       border-radius: 8px;
+      user-select: none;
     }
     /* Sidebar */
     .sidebar {
@@ -42,7 +44,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      background-color: #1a1a2e;
+      background-color: rgba(26,26,46,0.95);
       overflow-x: hidden;
       transition: 0.3s;
       padding-top: 60px;
@@ -70,7 +72,7 @@
 <body>
   <!-- Video Background -->
   <video autoplay muted loop playsinline>
-    <source src="Gee.mp4" type="video/mp4">
+    <source src="Gee.mp4" type="video/mp4"> 
     Browser Anda tidak mendukung pemutaran video.
   </video>
 
@@ -81,7 +83,7 @@
   <div id="mySidebar" class="sidebar">
     <span class="closebtn" onclick="closeSidebar()">&times;</span>
     <a href="discography.html">Discography</a>
-    <a href="member.html">Member</a>
+    <a href="member.html">Member</a> 
     <a href="album.html">Album</a>
   </div>
 
@@ -95,5 +97,6 @@
   </script>
 </body>
 </html>
+
 
 
