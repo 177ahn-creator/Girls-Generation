@@ -19,15 +19,81 @@
       left: 0;
       min-width: 100%;
       min-height: 100%;
-      object-fit: cover; /* agar tetap full screen */
+      object-fit: cover;
+      z-index: -1; /* supaya video di belakang */
+    }
+    /* Hamburger */
+    .menu-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 5;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    /* Sidebar */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: #1a1a2e;
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 10;
+    }
+    .sidebar a {
+      padding: 12px 24px;
+      text-decoration: none;
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      transition: 0.2s;
+    }
+    .sidebar a:hover { background-color: #575757; }
+    .sidebar .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 32px;
+      cursor: pointer;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <video autoplay muted playsinline>
+  <!-- Video Background -->
+  <video autoplay muted loop playsinline>
     <source src="Gee.mp4" type="video/mp4">
     Browser Anda tidak mendukung pemutaran video.
   </video>
+
+  <!-- Hamburger -->
+  <span class="menu-icon" onclick="openSidebar()">&#9776;</span>
+
+  <!-- Sidebar -->
+  <div id="mySidebar" class="sidebar">
+    <span class="closebtn" onclick="closeSidebar()">&times;</span>
+    <a href="discography.html">Discography</a>
+    <a href="member.html">Member</a>
+    <a href="album.html">Album</a>
+  </div>
+
+  <script>
+    function openSidebar(){
+      document.getElementById("mySidebar").style.width="250px";
+    }
+    function closeSidebar(){
+      document.getElementById("mySidebar").style.width="0";
+    }
+  </script>
 </body>
 </html>
+
 
