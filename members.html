@@ -1,188 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members</title>
+  <title>Video Page</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-    }
-
-    /* Video Fullscreen */
-    .video-container {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-    .video-container video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      overflow: hidden;
+      background: black;
     }
-
-    /* Sidebar */
-    .sidebar {
-      height: 100%;
-      width: 0;
+    video {
       position: fixed;
       top: 0;
-      right: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-      z-index: 2;
-    }
-
-    .sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      color: #f1f1f1;
-      display: block;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .sidebar a:hover {
-      background-color: #575757;
-    }
-
-    .sidebar .closebtn {
-      position: absolute;
-      top: 20px;
-      right: 25px;
-      font-size: 36px;
-      color: #f1f1f1;
-      cursor: pointer;
-    }
-
-    /* Menu button */
-    .openbtn {
-      position: fixed;
-      top: 15px;
-      right: 25px;
-      font-size: 30px;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      z-index: 3;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 4;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.8);
-    }
-    .modal-content {
-      background-color: #1a1a2e;
-      margin: 8% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 500px;
-      color: white;
-      text-align: center;
-    }
-    .modal img {
-      width: 150px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    .close:hover {
-      color: white;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover; /* agar tetap full screen */
     }
   </style>
 </head>
 <body>
-
-  <!-- Video autoplay -->
-  <div class="video-container">
-    <video autoplay muted loop>
-      <source src="Gee1.mp4" type="video/mp4">
-      Browser kamu tidak mendukung video.
-    </video>
-  </div>
-
-  <!-- Sidebar -->
-  <div id="mySidebar" class="sidebar">
-    <span class="closebtn" onclick="closeNav()">&times;</span>
-
-    <!-- Daftar anggota -->
-    <a onclick="showModal('Ahmad Sahroni','아흐마드 사흐로니 (Ahmad Sahroni)','Main Scandal','1977 August 8','Hell','ron.png')">Roonie</a>
-    <a onclick="showModal('Taeyeon','김태연 (Kim Taeyeon)','Leader, Main Vocalist','1989 March 9','South Korea','taey.png')">Taeyeon</a>
-    <a onclick="showModal('Jessica','제시카 정 (Jessica Jung)','Main Vocalist','1989 April 18','America-South Korea','jess.png')">Jessica</a>
-    <a onclick="showModal('Sunny','이순규 (Lee Soon Kyu)','Lead Vocalist, Sub-Rapper','1989 May 15','America-South Korea','sunn.png')">Sunny</a>
-    <a onclick="showModal('Tiffany','스테파니 황 (Stephanie Young Hwang)','Lead Vocalist, Sub-Rapper','1989 August 1','America-South Korea','tiff.png')">Tiffany</a>
-    <a onclick="showModal('Hyoyeon','김효연 (Kim Hyoyeon)','Main Dancer, Main Rapper, Sub-Vocalist','1989 September 22','South Korea','hyoy.png')">Hyoyeon</a>
-    <a onclick="showModal('Yuri','권유리 (Kwon Yuri)','Main Dancer, Lead Rapper, Sub-Vocalist','1989 December 5','South Korea','yuri.png')">Yuri</a>
-    <a onclick="showModal('Sooyoung','최수영 (Choi Sooyoung)','Lead Dancer, Lead Rapper, Sub-Vocalist','1990 February 10','South Korea','sooy.png')">Sooyoung</a>
-    <a onclick="showModal('Yoona','임윤아 (Lim Yoona)','Lead Dancer, Lead Rapper, Sub-Vocalist, Visual, Center','1990 May 30','South Korea','yoona.png')">Yoona</a>
-    <a onclick="showModal('Seohyun','서주현 (Seo JooHyun)','Maknae, Lead Vocalist','1991 June 28','South Korea','seohyun.png')">Seohyun</a>
-  </div>
-
-  <!-- Menu button -->
-  <button class="openbtn" onclick="openNav()">&#9776;</button>
-
-  <!-- Modal -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img id="memberImage" src="" alt="Foto Member">
-      <h2 id="memberName"></h2>
-      <p id="memberHangul"></p>
-      <p id="memberPosition"></p>
-      <p id="memberBirth"></p>
-      <p id="memberCountry"></p>
-    </div>
-  </div>
-
-  <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "250px";
-    }
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-
-    function showModal(name, hangul, position, birth, country, image) {
-      document.getElementById("memberName").innerText = name;
-      document.getElementById("memberHangul").innerText = hangul;
-      document.getElementById("memberPosition").innerText = "Position: " + position;
-      document.getElementById("memberBirth").innerText = "Birth: " + birth;
-      document.getElementById("memberCountry").innerText = "Country: " + country;
-      document.getElementById("memberImage").src = image;
-      document.getElementById("myModal").style.display = "block";
-    }
-
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == document.getElementById("myModal")) {
-        closeModal();
-      }
-    }
-  </script>
-
+  <video autoplay muted playsinline>
+    <source src="Gee.mp4" type="video/mp4">
+    Browser Anda tidak mendukung pemutaran video.
+  </video>
 </body>
 </html>
+
